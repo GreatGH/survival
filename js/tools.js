@@ -410,15 +410,15 @@
 			html+=`<span>${i+1}</span>`
 		}
 		radius.html(html)
-		radius.children().css({
-			position: 'relative',
-			display: 'inline-block',
-			width: '.3rem',
-			height: '.3rem',
-			borderRadius: '50%',
-			marginLeft: '.3rem',
-			transition: 'all 0.3s'
-		})
+//		radius.children().css({
+//			position: 'relative',
+//			display: 'inline-block',
+//			width: '.3rem',
+//			height: '.3rem',
+//			borderRadius: '50%',
+//			marginLeft: '.3rem',
+//			transition: 'all 0.3s'
+//		})
 		radius.children().eq(0).css('background','black').siblings().css('background','rgba(110,171,0,0.5)')
 		radius.children().on('mouseenter',function(){
 			img.parent().css({left: -$(this).index()*img.innerWidth()})

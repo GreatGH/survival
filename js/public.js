@@ -47,10 +47,14 @@ $(function(){
 })
 //设置fontsize的函数
 function htmlFonts(){
-	if(window.screen.availWidth<=768){
-		fontsize = $(document).width()*200/1200
-	}else{
-		fontsize = $(document).width()*100/window.screen.availWidth
-	}
-	$('html').css('font-size',fontsize)
+	var $window = $(window),           
+	ww = $window.width(),
+	wh = $window.height();
+	var FontSize = (100/1200)*ww;
+	$('html').css('font-size',FontSize);
+	$(window).resize(function(){
+	var ww = window.innerWidth,
+	       FontSize = (100/1200)*ww;
+		$('html').css('font-size',FontSize);
+	})
 }

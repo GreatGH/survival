@@ -23,7 +23,7 @@
 	left: 50%;
 	transform: translate(-50%,-50%);
 }
-.fly-carousel-outer>.radius>span{
+.fly-carousel-outer>.radius>span,.fly-shop-carosol-outer>.radius>span{
 	position: relative;
 	display: inline-block;
 	width: .3rem;
@@ -35,14 +35,15 @@
 .fly-carousel-outer>.radius>span:before{
 	content: '';
 	position: absolute;
-	width: .06rem;
-	height: .06rem;
+	width: 20%;
+	height: 20%;
 	border-radius: 50%;
 	left: 50%;
 	top: 50%;
-	margin-top: -.03rem;
-	margin-left: -.03rem;
+	/*margin-top: -.03rem;
+	margin-left: -.03rem;*/
 	background: #ef8200;
+	transform: translate(-50%, -50%);
 }
 .fly-character{
 	position: relative;
@@ -93,7 +94,7 @@
 	border-radius: 50%;
 	z-index: 0;
 }
-.fly-character>div .img:first-child{
+.fly-character>div .img{
 	width: .79rem;
 	height: .79rem;
 }
@@ -208,14 +209,13 @@
 .fly-shop-carosol-outer>.radius>span:after{
 	content: '';
 	position: absolute;
-	width: .06rem;
-	height: .06rem;
+	width: 20%;
+	height: 20%;
 	border-radius: 50%;
 	left: 50%;
 	top: 50%;
-	margin-top: -.03rem;
-	margin-left: -.03rem;
 	background: #ef8200;
+	transform: translate(-50%,-50%);
 }
 .show-more{
 	border-radius: .03rem;
@@ -266,38 +266,44 @@
 	border-top: 1px solid #ccc;
 	height: 522px;
 }
+.fly-science-life>div{
+	float: right;
+}
 .fly-science-life>.intro-left{
 	margin-top: 50px;
 	width: 50%;
 	text-align: center;
+	position: relative;
 }
-.fly-science-life>.life-radius{
-	left: 7.5%;
-	bottom: .5rem;
+.fly-science-life>.intro-left>.life-radius{
+	left: 15%;
+	bottom: -.2rem;
 	position: absolute;
 }
-.fly-science-life>.life-radius>span{
+.fly-science-life>.intro-left>.life-radius>span{
 	cursor: pointer;
 	padding: 0 7px;
 	border-right: 1px solid #f2f2f2;
+}
+.fly-science-life>.intro-left>.life-radius>span.on{
+	color: #ef8200;
+	font-size: 16px;
 }
 .fly-science-life>.intro-left .caro-content{
 	position: relative;
 	line-height: 24px;
 }
-.fly-science-life>.intro-left .life-bottom{
-	margin-top: 1.2rem;
-}
 .fly-science-life>.intro-left .life-bottom>.life-btn{
 	position: absolute;
 	right: 5%;
+	bottom: -.8rem;
 }
 .fly-science-life>.intro-left>.intro-outer{
 	width: 70%;
 	margin: 0 auto;
 }
 .fly-science-life .intro-outer .caro-content>.all-title{
-	margin-bottom: 50px;
+	margin-bottom: .5rem;
 }
 .fly-science-life .caro-content>.history-intro>div{
 	color: #666;
@@ -309,6 +315,9 @@
 	font-size: 0;
 	width: 50%;
 	height: 100%;
+}
+.fly-science-life>.intro-right img{
+	width: 100%;
 }
 .fly-video{
 	font-size: 0;
@@ -349,24 +358,59 @@
 	display: block;
 }
 
-
-
-
+@media (max-width: 1130px) {
+	.fly-science-life>.intro-left{
+		padding-top: 90px;
+	}
+	.fly-science-life>.intro-left .life-bottom{
+		padding-top: 1.2rem;
+	}
+	.fly-science-life>.intro-left .life-bottom>.life-btn{
+		right: 50%;
+		transform: translate(50%,0);
+		bottom: 0;
+	}
+	.fly-science-life>.intro-left,.fly-science-life>.intro-right{
+		width: 100%;
+	}
+	.fly-science-life{
+		flex-wrap: wrap;
+		height: auto;
+	}
+	.fly-science-life>.intro-left>.life-radius{
+		left: 50%;
+		transform: translate(-50%,0);
+		bottom: 90%;
+		/*width: 100%;*/
+		color: black;
+	}
+	.fly-science-life>.intro-left>.life-radius>span{
+		/*display: block;*/
+		font-size: 14px;
+		border: 0;
+	}
+	.fly-science-life>.intro-left>.intro-outer{
+		width: 90%;
+	}
+}
 @media (max-width: 990px) {
+	
 	.fly-gameny-techology>.fly-gameny-techology-intro{
-		width: 5.1rem;
+		/*width: 5.1rem;*/
 		text-align: left;
 	}
 	.fly-gameny-techology>.fly-gameny-techology-title{
 		font-size: 18px;
 	}
 	.fly-character{
-		top: -.6rem;
+		top: -1rem;
 	}
 	.fly-carousel-outer>.radius{
-		bottom: 0.6rem;
+		bottom: 1.2rem;
 	}
 	.fly-character>div .img{
+		/*width: 1.8rem;
+		height: 1.8rem;*/
 		left: 50%;
 		transform: translate(-50%,0);
 	}
@@ -379,16 +423,16 @@
 		padding-left: 0;
 		padding-top: .8rem;
 	}
-	/*.shop-carosol-inner>div>div .img{
-		height: 2.3rem;
-	}*/
 	.fly-carousel-outer>.carousel-inner>div>img{
 		height: auto;
-		width: 100%;
+		/*width: 100%;*/
 	}
 	/*.fly-shop-carosol-outer>.shop-carosol-inner>div{
 		padding: 0 .1rem;
 	}*/
+	.shop-carosol-inner>div>div .img{
+		height: 4.6rem;
+	}
 	.shop-carosol-inner>div>div .intro{
 		font-size: .2rem;
 	}
@@ -401,5 +445,52 @@
 		width: auto;
 		position: relative;
     	/*left: -90%;*/
+	}
+	
+	.all-title{
+		font-size: 18px;
+	}
+	
+}
+@media (max-width: 768px){
+	.fly-science-life>.intro-left{
+		margin-top: 0;
+	}
+	.fly-science-life>.intro-left>.life-radius{
+		left: 50%;
+		transform: translate(-50%,0);
+		/*bottom: 0;*/
+		width: 100%;
+		color: black;
+	}
+	.shop-carosol-inner>div>div .img{
+		width: 100%;
+		height: 7rem;
+	}
+	.fly-shop-carosol-outer>.shop-carosol-inner>div img{
+		width: 80%;
+	}
+	.fly-carousel-outer>.radius>span,.fly-shop-carosol-outer>.radius>span{
+		width: .7rem;
+		height: .7rem;
+	}
+	.fly-shop-carosol-outer>.radius{
+		bottom: 1.6rem;
+	}
+	.fly-character>div .img{
+		width: 1.8rem;
+		height: 1.8rem;
+		left: 50%;
+		transform: translate(-50%,0);
+	}
+	.fly-character>div .intro{
+		text-align: center;
+		margin-left: 0;
+		padding-left: 0;
+		padding-top: 2rem;
+	}
+	.fly-character>div .changebig>img{
+		transform: translate(-50%,0);
+		position: relative;
 	}
 }

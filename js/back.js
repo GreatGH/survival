@@ -24,7 +24,7 @@ $(function(){
 		success: function(res){
 			if(res.status == 200){
 				for(let item of res.data){
-					classHtml = `<option value="${item.c_id}">${item.c_name}</option>`
+					classHtml = `<option value="${item.s_id}">${item.c_name}</option>`
 					$(".add-modal>.add-modal-content>.add-modal-body select").append(classHtml)
 				}
 			}
@@ -55,6 +55,7 @@ $(function(){
 		let id = $(this).closest('.shop-all').find('.shop-num').html()
 		let sure = confirm('确定是否删除 '+id+' 号商品？')
 		if(sure == true){
+			addPageBtn(Math.ceil($(this).closest('.shop-all').siblings().length))
 			$(this).closest('.shop-all').remove()
 			$.ajax({
 				url:api+'delete',
@@ -116,7 +117,7 @@ $(function(){
 		$(this).addClass('border')
 		$(this).siblings().removeClass('border')
 	})
-
+	
 	// 点击确定后收起类别选择
 	$('div.absolute>.choose-result>.resure').click(function(){
 		$('.search .please-choose>div.absolute').slideUp(300)
@@ -149,7 +150,26 @@ $(function(){
 	$('.big-img').click(function(){
 		$(this).hide(300)
 	})
+	let index = 1
 	
+	
+	//点击翻页
+	$('.bottom-right>.all-shop>.changepage').on('click','span.page',function(){
+		index = $(this).index()
+		chanPage(index)
+	})
+	$('.bottom-right>.all-shop>.changepage').on('click','span:first',function(){
+		if(index!=$(this).index()+1){
+			index --
+			chanPage(index)
+		}
+	})
+	$('.bottom-right>.all-shop>.changepage').on('click','span:last',function(){
+		if(index!=$(this).index()-1){
+			index ++
+			chanPage(index)
+		}
+	})
 	
 	// 获取商品的方法
 	function getgoods(){
@@ -176,10 +196,10 @@ $(function(){
 									</div>
 								</div>
 							</div>
-							<div class="type name">
+							<div class="type name overflow">
 								<div class="intro">
 									<div class="overflow-1">品牌名称</div>
-									<div class="intro">分类名称>分类名称>分类名称</div>
+									<div class="intro">${item.c_name}</div>
 								</div>
 							</div>
 							<div class="price-ope"><span>￥</span><span class="price-num">${item.price}</span></div>
@@ -196,11 +216,48 @@ $(function(){
 								</div>
 							</div>
 						</div>`
-						$(".bottom-right>.all-shop").append(html)
+						$(".bottom-right>.all-shop>.shop-content").append(html)
 					}
+					addPageBtn(Math.ceil(res.data.length))
 				}
-				
 			}
 		})
+	}
+	
+	//添加翻页按钮
+	function addPageBtn(length){
+		let page = ``
+		$('.bottom-right>.all-shop>.changepage>div').empty()
+		for(let i = 0;i<Math.ceil(length/5);i++){
+			page = `<span class="page">${i+1}</span>`
+			$('.bottom-right>.all-shop>.changepage>div').append(page)
+		}
+		if(length/5>0){
+			$('.bottom-right>.all-shop>.changepage>div').prepend(`<span class="change">上一页</span>`)
+			$('.bottom-right>.all-shop>.changepage>div').append(`<span class="change">下一页</span>`)
+		}
+		$('.bottom-right>.all-shop>.changepage span.page:first').addClass('on')
+	}
+	
+	//上下翻页
+	function chanPage(i){
+		$('.bottom-right>.all-shop>.changepage span.page').eq(i-1).addClass('on').siblings().removeClass('on')
+		let length = $('.bottom-right>.all-shop>.shop-content>.shop-all').length
+		let beScrTop = 0
+		if(Math.ceil(length/5)-1 == i-1){
+			beScrTop = $('.bottom-right>.all-shop>.shop-content>.shop-all').innerHeight()*(length-5)
+		}else{
+			beScrTop = $('.bottom-right>.all-shop>.shop-content>.shop-all').innerHeight()*5*(i-1)
+		}
+		let instend = beScrTop-$('.bottom-right>.all-shop>.shop-content').scrollTop()
+		let speed = instend/100>0?(instend/100>1?instend/100:1):(instend/100<-1?instend/100:-1)
+		let count = 1
+		let timing = setInterval(function(){
+			$('.bottom-right>.all-shop>.shop-content').scrollTop($('.bottom-right>.all-shop>.shop-content').scrollTop()+speed)
+			instend = speed>0?beScrTop-$('.bottom-right>.all-shop>.shop-content').scrollTop():$('.bottom-right>.all-shop>.shop-content').scrollTop()-beScrTop
+			if(instend<=0){
+				clearInterval(timing)
+			}
+		},1)
 	}
 })

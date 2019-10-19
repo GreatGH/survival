@@ -69,6 +69,8 @@
 .bottom-bottom>.bottom-right{
 	padding: 0 .2rem;
 	width: 84%;
+	height: 100%;
+	overflow-y: auto;
 }
 .bottom-bottom>.bottom-right>.prov{
 	margin-bottom: .15rem;
@@ -273,10 +275,6 @@ div.absolute>.choose-result>.resure{
 	text-indent: .47rem;
 	background-position: .31rem center;
 }
-.bottom-right{
-	height: 100%;
-	overflow-y: auto;
-}
 .bottom-right>ul{
 	border: 1px solid #ddd;
 	background-image: linear-gradient(to bottom,white 10%,#e2e2e2 100%);
@@ -310,8 +308,30 @@ div.absolute>.choose-result>.resure{
 	border: 0;
 }
 .bottom-right>.all-shop{
+	height: 370px;
+	position: relative;
 	margin-top: .15rem;
-	border: 1px solid #ddd;
+	borer: 1px solid #ddd;
+	top: 0;
+    bottom: 0;
+}
+.bottom-right>.all-shop>.shop-content{
+	height: 100%;
+	overflow-y: auto;
+}
+.bottom-right>.all-shop>.changepage{
+	position: absolute;
+	left: 0;
+	right: 0;
+	background: white;
+	bottom: -90px;
+}
+.all-shop>.changepage>div>span{
+	padding: 8px 20px;
+	border: 1px solid #ccc;
+	display: inline-block;
+	border-radius: 5px;
+	cursor: pointer;
 }
 .bottom-right>.all-shop>.shop-head{
 	font-weight: bold;
@@ -319,7 +339,7 @@ div.absolute>.choose-result>.resure{
 	border-bottom: 1px solid #ddd;
 	line-height: .42rem;
 }
-.bottom-right>.all-shop>.content>div{
+.bottom-right>.all-shop .content>div{
 	float: left;
 }
 .bottom-right>.all-shop>.shop-head>div{
@@ -330,17 +350,17 @@ div.absolute>.choose-result>.resure{
 .bottom-right>.all-shop>.shop-head>div:first-child{
 	border: none;
 }
-.bottom-right>.all-shop>.content>div.shop-num{
+.bottom-right>.all-shop .content>div.shop-num{
 	width: 1.45rem;
 }
-.bottom-right>.all-shop>.content>div.type{
+.bottom-right>.all-shop .content>div.type{
 	padding: 0 .15rem;
 	width: 2.43rem;
 }
-.bottom-right>.all-shop>.content>div.price-ope{
+.bottom-right>.all-shop .content>div.price-ope{
 	width: .87rem;
 }
-.bottom-right>.all-shop>.content>div.order{
+.bottom-right>.all-shop .content>div.order{
 	width: .48rem;
 }
 .bottom-right .shop-all{
@@ -354,12 +374,14 @@ div.absolute>.choose-result>.resure{
 }
 .bottom-right .shop-all>div>div{
 	line-height: .12rem;
+	width: .56rem;
+    height: .56rem;
+    text-align: center;
 }
 .bottom-right .shop-all>.type{
 	text-align: left;
 }
 .bottom-right .shop-all>.type img{
-	width: .56rem;
 	height: .56rem;
 }
 .bottom-right .shop-all>.type>.intro{
@@ -407,6 +429,23 @@ div.absolute>.choose-result>.resure{
 
 
 
+
+.bottom-right>.all-shop>.changepage span{
+	font-size: 14px;
+	color: white;
+	margin-right: 4px;
+}
+.bottom-right>.all-shop>.changepage span.change{
+	background: cornflowerblue;
+}
+.bottom-right>.all-shop>.changepage span.page{
+	background: cornflowerblue;
+}
+.bottom-right>.all-shop>.changepage span.page.on{
+	background: lightsteelblue;
+}
+
+
 /*模态框*/
 .add-modal{
 	display: none;
@@ -418,6 +457,7 @@ div.absolute>.choose-result>.resure{
 	z-index: 10;
 }
 .add-modal>.add-modal-content{
+	transform: translate(-50%,0);
 	padding: 0 .5rem .5rem;
 	border-radius: .05rem;
 	position: absolute;

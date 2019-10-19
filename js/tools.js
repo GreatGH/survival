@@ -409,6 +409,14 @@
 		for(var i=0; i<img.length-num; i++){
 			html+=`<span>${i+1}</span>`
 		}
+		let length = img.parent().find('img').length
+		img.parent().find('img').on('load',function(){
+			length--
+			if(length <= 0){
+				img.width(img.parent().parent().width()/num)
+				img.parent().width(img.width()*img.length)
+			}
+		})
 		radius.html(html)
 //		radius.children().css({
 //			position: 'relative',
@@ -428,5 +436,16 @@
 		})
 		radius.css('left','50%')
 	}
-
+	$.extend({
+		srollTransform(ele){
+			ele.each(function(index){
+				console.log($(window).height())
+				if($(this).position().top-$(document).scrollTop()<=$(window).height()+200){
+					$(this).addClass('scrollslide')
+				}else{
+					$(this).removeClass('scrollslide')
+				}
+			})
+		}
+	});
 })($)

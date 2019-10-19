@@ -34,4 +34,15 @@ function carosol(){
 		control++
 	})
 }
+
 $.lunbo($(".fly-carousel-outer>.carousel-inner>div"),$(".fly-carousel-outer>.radius"))
+
+
+
+// 屏幕滑动模块渐变出现
+// $.srollTransform($('div.hideitem'))   
+// $('div.hideitem')是需要滑动的模块    需要此效果的模块都需要添加一个hideitem类名
+$(document).scroll(function(){
+	$.srollTransform($('div.hideitem'))
+})
+$.srollTransform($('div.hideitem'))

@@ -219,7 +219,7 @@
 }
 .show-more{
 	border-radius: .03rem;
-	padding: .1rem .4rem !important;
+	padding: .1rem .4rem;
 	border: 1px solid #ef8200;
 	background: #ef8200;
 	position: absolute !important;
@@ -328,20 +328,22 @@
 .fly-video>.fly-video-btn{
 	font-size: 22px;
 	position: absolute;
+	transform: translate(-50%, -30%);
+	transition: all 0.5s ease-out;
 }
 .fly-video>.fly-video-btn>.fly-video-intro{
 	transition: all 0.5s ease-out;
-	height: 0;
 	opacity: 0;
-	padding-top: 0px;
+	padding-top: 32px;
 	position: relative;
-	top: 20px;
+	
+}
+.fly-video:hover>.fly-video-btn{
+	transform: translate(-50%, -50%);
 }
 .fly-video:hover>.fly-video-btn>.fly-video-intro{
-	height: auto;
 	opacity: 1;
-	padding-top: 32px;
-	top: 0;
+	/*padding-top: 32px;*/
 }
 .fly-video>.fly-video-img img,.fly-video>.fly-video-img fly-video>source{
 	width: 100%;
@@ -357,6 +359,7 @@
 .fly-video>.fly-video-img>.fly-video-img-bg.show{
 	display: block;
 }
+
 
 @media (max-width: 1130px) {
 	.fly-science-life>.intro-left{
@@ -437,6 +440,7 @@
 		font-size: .2rem;
 	}
 	.show-more{
+		padding: .2rem 1rem;
 		font-size: .2rem;
 	}
 	.fly-character>div .changebig>img{
@@ -471,8 +475,8 @@
 		width: 80%;
 	}
 	.fly-carousel-outer>.radius>span,.fly-shop-carosol-outer>.radius>span{
-		width: .7rem;
-		height: .7rem;
+		width: .8rem;
+		height: .8rem;
 	}
 	.fly-shop-carosol-outer>.radius{
 		bottom: 1.6rem;

@@ -26,16 +26,18 @@ $(".swiper-pagination-bullet").click(function(){
 	ele.eq(index).siblings().removeClass('on')
 })
 
+$('img').on('load',function(){
+	widset()
+})
 
-widset()
-	window.onresize = function(){
-		widset()
+window.onresize = function(){
+	widset()
+}
+function widset(){
+	if($(document).width()<=1000){
+		$(".swiper-wrapper").innerWidth($(".swiper-wrapper").parent().parent().width()/2);
+	}else{
+		$(".swiper-wrapper").innerWidth($(".swiper-wrapper").parent().parent().width()/3);
 	}
-	function widset(){
-		if($(document).width()<=1000){
-			$(".swiper-wrapper").innerWidth($(".swiper-wrapper").parent().parent().width()/2);
-		}else{
-			$(".swiper-wrapper").innerWidth($(".swiper-wrapper").parent().parent().width()/3);
-		}
-	}
+}
 $.lunboS($(".swiper-wrapper"),$(".fly-dot-box"))

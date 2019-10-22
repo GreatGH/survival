@@ -649,19 +649,20 @@
 
 @media (max-width:768px) {
 	.fly-inside_banner {
-		height: 1.9rem;
+		height: 6rem;
 	}
 	/*标题*/
 	.fly-inside_banner .fly-futext {
 		position: absolute;
-		left: 37%;
-		top: 30%;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%,-50%);
 	}
 	.fly-inside_banner .fly-fuhuf {
-		font-size: .3rem;
+		font-size: 16px;
 	}
 	.fly-inside_banner .fly-cont {
-		font-size: .14rem;
+		font-size: 16px;
 	}
 	.process-item {
 		margin-bottom: 30px;

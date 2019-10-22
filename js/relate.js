@@ -1,6 +1,5 @@
 
 // 文档加载完成
-<<<<<<< HEAD
 //$(function(){
 //  //点击按钮进行留言
 //  $(".fly-tospan").click(function(){
@@ -34,42 +33,6 @@
 //      }
 //  })
 //})   
-=======
-$(function(){
-    //点击按钮进行留言
-    $(".fly-tospan").click(function(){
-        if( $(".from-validate").valid()) {
-        	let username = $("[name=username]").val()
-            let phone = $("[name= phone]").val()
-            let email = $("[name=email]").val()
-            let msg = $("[name=msg]").val()
-			let api = 'http://127.0.0.1:3003/';
-			
-            $.ajax({
-               url:api +　'liuyu',
-               type:'post',
-               data:{
-                   username,
-                   phone,
-                   email,
-                   msg
-               },
-               dataType:'json',
-               success:function(res){            
-                if(res.status == 200){                 
-             	//成功提示成功
-             	//失败则提示失败
-             	  alert("留言成功")
-                }else{                 
-        		  alert("留言失败")
-                }
-               }
-            })
-        }
-    })
-})   
-
->>>>>>> fd78cd289bec7828bf3875e288ba4c974e92a129
 
 $(function(){
 	var show_num = [];

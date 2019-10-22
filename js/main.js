@@ -65,7 +65,10 @@ $('.fly-select-btn').click(function(){
 })
 
 $.lunboS($('.carousel-box .fly-swiper-list'),$('.carousel-box .fly-dot-box'))
+<<<<<<< HEAD
 
+=======
+>>>>>>> fd78cd289bec7828bf3875e288ba4c974e92a129
 $(document).scroll(function(){
 	$.srollTransform($('div.hideitem'))
 })

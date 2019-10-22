@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //$(".carousel").carousel({
 //	interval:2000
 //})
@@ -17,3 +18,24 @@ $(document).scroll(function(){
 		})
 	}
 })
+=======
+$(".carousel").carousel({
+	interval:2000
+})
+$(document).scroll(function(){
+		if($(document).scrollTop()>=70){
+				$(".produce-header").animate({
+					'margin-top':'.58rem'
+				})
+				$(".produce-header").css({
+					"position":'fixed',
+					'top':".1rem",
+					'left':'0',
+					"z-index":"1",
+					"background":"#ffff",
+					 "width":"100%",
+					 "line-height":".2rem"
+				})
+			}
+		})
+>>>>>>> fd78cd289bec7828bf3875e288ba4c974e92a129

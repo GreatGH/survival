@@ -102,6 +102,9 @@ li{
 .fl{
 	float: left;
 }
+.fr{
+	float: right;
+}
 /* 从中心切换按钮颜色 */
 .btn-center-slide{
     color: white;
@@ -170,7 +173,65 @@ div.scrollslide{
 
 
 
+/*轮播圆点*/
+.fly-dot-box{
+	text-align: center;
+	transition: 300ms;
+	transform: translate3d(0, 0, 0);
+    z-index: 10;
+}
+.fly-dot-box .fly-dot-list{
+	width: 30px;
+    height: 30px;
+    display: inline-block;
+    border-radius: 100%;
+    position: relative;
+    margin: 0 8px;
+	cursor: pointer;
+}
+.fly-dot-box .fly-dot-list:before {
+    background: #d8d8d8;
+}
+.fly-dot-box .fly-dot-list-active:before {
+    background: #ef8200;
+}
 
+.fly-dot-list:before {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #fff;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    margin-top: -3px;
+    margin-left: -3px;
+    transition: ease .6s;
+}
+
+.fly-dot-list:after{
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid #ef8200;
+    left: 50%;
+    top: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    transition: ease .6s;
+    transform: scale(0);
+}
+/*.fly-carousel-outer .fly-dot-box.radius .fly-dot-list:after{
+	margin-left: -13px;
+    margin-top: -13px;
+}*/
+.fly-dot-list-active:after {
+    transform: scale(1);
+}
+/*轮播圆点*/
 
 
 
@@ -220,6 +281,7 @@ div.scrollslide{
 }
 .survival-top div>a{
 	padding: 0 .08rem;
+	color: #555;
 }
 .survival-top div>a>span{
 	background: url(../img/down-arrow.png) no-repeat;
@@ -298,6 +360,13 @@ div.scrollslide{
 	width: 50%;
 	height: 2px;
 	background: #ef8200;
+	transition: all 0.5s ease-in-out;
+}
+.survival-top>.top-arrow.on:before{
+	transform: rotate(-45deg);
+}
+.survival-top>.top-arrow.on:after{
+	transform: rotate(225deg);
 }
 .survival-top>.top-arrow:before{
 	left: 8%;
@@ -324,29 +393,49 @@ div.scrollslide{
 }
 .survival-top>.top-shoufengqin>li{
 	font-size: 15px;
-	padding: 2px 0;
-	padding-left: 10px;
-	line-height: .4rem;
+	line-height: 40px;
 	border-bottom: 1px solid #ccc;
+	position: relative;
+}
+.survival-top>.top-shoufengqin>li:first-child,.survival-top>.top-shoufengqin>li:last-child{
+	border: none;
+}
+.survival-top>.top-shoufengqin .hidechoose>div{
+	font-size: 12px;
+	border-bottom: 1px solid #ccc;
+}
+.survival-top>.top-shoufengqin .hidechoose>div:hover{
+	background: #ef8200;
+}
+.survival-top .hidechoose>div:hover a{
+	color: white;
+}
+.survival-top>.top-shoufengqin .hidechoose>div:last-child{
+	border: none;
+}
+.survival-top>.top-shoufengqin>li>.hidechoose{
+	display: none;
 }
 .survival-top>.top-shoufengqin>li a.symbel{
 	padding: 0 15px;
 	font-size: 20px;
 	width: 39px;
 	text-align: center;
-	float: right;
 	display: none;
+	position: absolute;
+    top: 5px;
+    right: 5px;
 }
 .survival-top>.top-shoufengqin>li a.symbel.show{
 	display: block;
 }
 .survival-top>.top-shoufengqin>li>input{
 	padding-left: 10px;
-	font-size: 20px;
+	font-size: 14px;
 	border-radius: 5px;
 	border: 1px solid #ccc;
 	width: 100%;
-	height: .5rem;
+	height: 34px;
 }
 
 
@@ -490,11 +579,11 @@ div.scrollslide{
 	    display: flex;
 	}
 	.right-aside>div{
-		width: 1.2rem;
+		width: .8rem;
 		float: left;
 		margin: 0 .2rem;
-		height: 1.2rem;
-		line-height: 1.5rem;
+		height: .8rem;
+		line-height: 1rem;
 	}
 	.right-aside>div:last-child{
 		display: none;
@@ -507,15 +596,17 @@ div.scrollslide{
 	}
 	.right-aside img{
 		width: 50%;
+		height: 50%;
 	}
 	.survival-bottom .friendly,.survival-bottom>.bottom-top>.bottom-right-guide>p{
 		font-size: .24rem;
 	}
 	.survival-bottom>.bottom-top>.bottom-right-guide>.contact{
-		font-size: 0.8rem;
+		font-size: 46px;
+		line-height: 47px;
 	}
 	.survival-bottom>.bottom-top>.bottom-right-guide>.relate-us{
-		font-size: .4rem;
+		font-size: .8rem;
 	}
 	.survival-bottom>.bottom-top>.bottom-right-guide{
 		text-align: left;

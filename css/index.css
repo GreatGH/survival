@@ -23,28 +23,7 @@
 	left: 50%;
 	transform: translate(-50%,-50%);
 }
-.fly-carousel-outer>.radius>span,.fly-shop-carosol-outer>.radius>span{
-	position: relative;
-	display: inline-block;
-	width: .3rem;
-	height: .3rem;
-	border-radius: 50%;
-	margin-left: .3rem;
-	transition: background 0.5s;
-}
-.fly-carousel-outer>.radius>span:before{
-	content: '';
-	position: absolute;
-	width: 20%;
-	height: 20%;
-	border-radius: 50%;
-	left: 50%;
-	top: 50%;
-	/*margin-top: -.03rem;
-	margin-left: -.03rem;*/
-	background: #ef8200;
-	transform: translate(-50%, -50%);
-}
+
 .fly-character{
 	position: relative;
 	top: -1.2rem;
@@ -199,24 +178,7 @@
 	height: 9px;
 	background: url(../img/shop-arrow.png) no-repeat;
 }
-.fly-shop-carosol-outer>.radius{
-	font-size: 0;
-	position: absolute;
-	bottom: 1.2rem;
-	left: 50%;
-	transform: translate(-50%,-50%);
-}
-.fly-shop-carosol-outer>.radius>span:after{
-	content: '';
-	position: absolute;
-	width: 20%;
-	height: 20%;
-	border-radius: 50%;
-	left: 50%;
-	top: 50%;
-	background: #ef8200;
-	transform: translate(-50%,-50%);
-}
+
 .show-more{
 	border-radius: .03rem;
 	padding: .1rem .4rem;
@@ -359,7 +321,10 @@
 .fly-video>.fly-video-img>.fly-video-img-bg.show{
 	display: block;
 }
-
+.fly-shop-carosol-outer>.radius{
+	position: absolute;
+	transform: translate(-50%,0);
+}
 
 @media (max-width: 1130px) {
 	.fly-science-life>.intro-left{
@@ -401,6 +366,13 @@
 	.fly-gameny-techology>.fly-gameny-techology-intro{
 		/*width: 5.1rem;*/
 		text-align: left;
+	}
+	.survival-bottom .friendly .friendly-vx:hover>.aqrcode{
+		bottom: 20px;
+	}
+	.friendly .friendly-vx>.aqrcode img{
+		width: 50px;
+		height: 50px;
 	}
 	.fly-gameny-techology>.fly-gameny-techology-title{
 		font-size: 18px;

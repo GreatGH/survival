@@ -50,7 +50,7 @@
 		<!--底部内容-->
 		<div class="bottom">
 			<div class="top clearfix">
-				<div class="username"><a>欢迎您：古人灏</a></div>
+				<div class="username"><a>请登录</a></div>
 				<div class="line"></div>
 				<div class="changepwd"><a>修改密码</a></div>
 				<div class="line"></div>
@@ -193,7 +193,9 @@
 							<div class="price-ope">操作</div>
 						</div>
 						<div class="shop-content">
-							
+							<br />
+							<p>*空空如也</p>
+							<p>*请先登录后在尝试哦</p>
 						</div>
 						<div class="changepage flex-center">
 							<div>
@@ -234,6 +236,9 @@
 							<input name="shopimg" type="file" id="shop-img" accept="image/*"/>
 						</div>
 						<div>
+							<input type="hidden" name="token"/>
+						</div>
+						<div>
 							<label for="shop-classify">商品类别</label>
 							<select name="shopclassify" id="shop-classify">
 							</select>
@@ -245,7 +250,9 @@
 				</div>
 			</div>
 		</div>
-		
+		<div class="success-model">
+			
+		</div>
 		<!--放大的图片-->
 		<div class="big-img">
 			<img src="" alt="" />

@@ -46,12 +46,15 @@ $(function(){
 	})
 	
 	$(".survival-top>.top-arrow").click(function(){
+		$(".survival-top>.top-arrow").toggleClass('on')
 		$(".survival-top>.top-shoufengqin").slideToggle(300)
 	})
-	$(".survival-top>.top-shoufengqin>li a.symbel").click(function(){
-		$(this).toggleClass('show').siblings('.symbel').toggleClass('show')
-		$(this).parent().siblings().find('.symbel:first').addClass('show')
-		$(this).parent().siblings().find('.symbel:last').removeClass('show')
+	$(".survival-top>.top-shoufengqin>li").click(function(){
+		$(this).find('div.hidechoose').slideToggle(300)
+		$(this).siblings().find('div.hidechoose').slideUp(300)
+		$(this).find('a.symbel').toggleClass('show')
+		$(this).siblings().find('.symbel:first').addClass('show')
+		$(this).siblings().find('.symbel:last').removeClass('show')
 	})
 })
 //设置fontsize的函数

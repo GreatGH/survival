@@ -290,62 +290,96 @@
 		})
 	}
 	
-	//轮播
 	$.extend({
 		lunbo:function(img,radius){
 			let index = 0
-			let html = ``
-			for(var i=0; i<img.length-1; i++){
-				html+=`<span>${i+1}</span>`
-			}
-			radius.html(html)
-			radius.children().eq(0).css('background','black').siblings().css('background','rgba(110,171,0,0.5)')
-			let imgInterVal = setInterval(interVal,2000)
-			radius.children().on('mouseenter',function(){
-				img.parent().stop().animate({left: -$(this).index()*img.width()},300)
-				$(this).css('background','black').siblings().css('background','rgba(110,171,0,0.5)')
-				index = $(this).index();
-//				img.parent().stop(false)
-			})
-			radius.css('left','50%')
-			img.parent().parent().mouseenter(function(){
-				clearInterval(imgInterVal)
-			})
-			img.parent().parent().mouseleave(function(){
-				imgInterVal = setInterval(interVal,2000)
-			})
-			function imgMove(index,time){
-				img.parent().animate({
-					left: -img.width()*index
-				},time)
-			}
-			function interVal(){
-				index++
-				imgMove(index,1000)
-				if(index == img.length-1){
-					index = 0
-					imgMove(index,0)
+			let length =img.find('img').length
+			img.find('img').on('load',function(){
+				length--
+				if(length <= 0){
+					let html = ``
+					for(var i=0; i<img.length-1; i++){
+						html+=`<span class="fly-dot-list">${i+1}</span>`
+					}
+					radius.html(html)
+
+					radius.children().eq(0).addClass('fly-dot-list-active').siblings().addClass('fly-dot-list')
+					let imgInterVal = setInterval(interVal,2000)
+					radius.children().on('mouseenter',function(){
+						img.parent().stop().animate({left: -$(this).index()*img.width()},300)
+						$(this).addClass('fly-dot-list-active').siblings().addClass('fly-dot-list').removeClass('fly-dot-list-active')
+						index = $(this).index();
+		//				img.parent().stop(false)
+					})
+					radius.css('left','50%')
+					img.parent().parent().mouseenter(function(){
+						console.log(1123)
+						clearInterval(imgInterVal)
+					})
+					img.parent().parent().mouseleave(function(){
+						imgInterVal = setInterval(interVal,2000)
+					})
+					function imgMove(index,time){
+						img.parent().animate({
+							left: -img.width()*index
+						},time)
+					}
+					function interVal(){
+						index++
+						imgMove(index,1000)
+						if(index == img.length-1){
+							index = 0
+							imgMove(index,0)
+						}
+						radius.children().eq(index).addClass('fly-dot-list-active').siblings().addClass('fly-dot-list').removeClass('fly-dot-list-active')
+					}
+					document.addEventListener('webkitvisibilitychange',function(){
+						var isHidden = document.hidden;
+						if(isHidden){
+							clearInterval(imgInterVal)
+						}else{
+							imgInterVal = setInterval(interVal,1500)
+						}
+					})
 				}
-				radius.children().eq(index).css('background','black').siblings().css('background','rgba(110,171,0,0.5)')
-			}
-			document.addEventListener('webkitvisibilitychange',function(){
-				var isHidden = document.hidden;
-				if(isHidden){
-					clearInterval(imgInterVal)
-				}else{
-					imgInterVal = setInterval(interVal,1500)
-				}
 			})
-		},
+		}
+	})
+	
+	$.extend({
 		lunboS:function(img,radius){
 			lunbo(img,radius,2)
-		},
+		}
+	})
+	
+	$.extend({
 		slunbo:function(img,radius){
 			lunbo(img,radius,1)
 		}
 	})
 	
 	
+	//canvas跟随鼠标动画
+	function lunbo(img,radius,num){
+//		console.log(radius)
+		let index = 0
+		let html = ``
+//		console.log(img.length)
+		for(var i=0; i<img.length-num; i++){
+			html+=`<span></span>`
+		}
+		radius.html(html)
+
+		radius.children().addClass('fly-dot-list')
+		radius.children().eq(0).addClass('fly-dot-list-active').siblings().removeClass('fly-dot-list-active').addClass('fly-dot-list')
+		radius.children().on('mouseenter',function(){
+			img.parent().css({left: -$(this).index()*img.innerWidth()})
+			$(this).addClass('fly-dot-list-active').siblings().removeClass('fly-dot-list-active').addClass('fly-dot-list')
+			index = $(this).index();
+			img.parent().stop(false)
+		})
+		radius.css('left','50%')
+	}
 	//canvas跟随鼠标动画
 	$.extend({
 		canvMouseMove: function(){
@@ -403,43 +437,10 @@
 			},50)
 		}
 	})	
-	function lunbo(img,radius,num){
-		let index = 0
-		let html = ``
-		for(var i=0; i<img.length-num; i++){
-			html+=`<span>${i+1}</span>`
-		}
-		let length = img.parent().find('img').length
-		img.parent().find('img').on('load',function(){
-			length--
-			if(length <= 0){
-				img.width(img.parent().parent().width()/num)
-				img.parent().width(img.width()*img.length)
-			}
-		})
-		radius.html(html)
-//		radius.children().css({
-//			position: 'relative',
-//			display: 'inline-block',
-//			width: '.3rem',
-//			height: '.3rem',
-//			borderRadius: '50%',
-//			marginLeft: '.3rem',
-//			transition: 'all 0.3s'
-//		})
-		radius.children().eq(0).css('background','black').siblings().css('background','rgba(110,171,0,0.5)')
-		radius.children().on('mouseenter',function(){
-			img.parent().css({left: -$(this).index()*img.innerWidth()})
-			$(this).css('background','black').siblings().css('background','rgba(110,171,0,0.5)')
-			index = $(this).index();
-			img.parent().stop(false)
-		})
-		radius.css('left','50%')
-	}
 	$.extend({
 		srollTransform(ele){
 			ele.each(function(index){
-				console.log($(window).height())
+//				console.log($(window).height())
 				if($(this).position().top-$(document).scrollTop()<=$(window).height()+200){
 					$(this).addClass('scrollslide')
 				}else{
@@ -447,5 +448,10 @@
 				}
 			})
 		}
-	});
+	})
+	
+	// md5加密
+	$.md5=function(psd){
+        return hex_md5(psd)
+    }
 })($)

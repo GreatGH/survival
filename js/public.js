@@ -5,6 +5,7 @@ $(window).resize(function(){
 	htmlFonts()
 })
 $(function(){
+	$('.survival-top>div>div').eq(window.localStorage.getItem('index')).addClass('wid').siblings().removeClass('wid')
 	// 页面加载完成之后设置一次html的fontsize
 	let length = $('img').length
 	$('img').on('load',function(){
@@ -39,6 +40,23 @@ $(function(){
 			})
 			$(".right-aside>div:last-child").hide(300)
 		}
+	})
+		
+	// 回到顶部
+	$('.right-aside>.gotop').click(function(){
+		let speed = $(document).scrollTop()/100
+		let goTopTiming = setInterval(function(){
+			if($(document).scrollTop()<=0){
+				$(document).scrollTop(0)
+				clearInterval(goTopTiming)
+			}else{
+				$(document).scrollTop($(document).scrollTop()-speed)
+			}
+		},1)
+	})
+	
+	$('.survival-top>div>div').click(function(){
+		window.localStorage.setItem('index',$(this).index())
 	})
 	
 	$(".survival-top .top-modal.top-search a").click(function(){

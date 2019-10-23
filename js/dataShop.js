@@ -8,6 +8,7 @@ $(function(){
 			let html = '';
 			let html1='';
 			let html2='';
+			let html3='';
 			console.log(res)
 			let item =res.data
 			//产品选型 产品
@@ -86,6 +87,36 @@ $(function(){
 			}
 			$('.shop-carosol-inner').append(html2)
 			
+			
+			//产品页产品渲染
+			for(let i in item){
+				html3+=`
+					<li>
+						<div class="product-wapper">
+							<div class="img-scale">
+                                <img src="${item[i].img}" />
+								<div class="product-intro">
+									<h4>${item[i].nam}</h4>
+									<p class="product-detail font-14">${item[i].intro}</p>
+									<a href="fly-product-detail.html">
+										<div class="product-add"></div>
+									</a>
+								</div>
+
+							</div>
+							<div class="product-bottom clearfix">
+								<div class="fl">
+									<p class="product-title">${item[i].c_name}</p>
+									<p class="product-text">${item[i].nam}</p>
+									<a class="product-btn">立即购买</a>
+								</div>
+								<div class="product-sale">立即购买</div>
+							</div>
+						</div>
+						<div class="after"></div>
+					</li>`
+			}
+			$('.product-item').append(html3)
 		}
 	})
 

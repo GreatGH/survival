@@ -26,10 +26,10 @@ $(function(){
 								</div>
 							</a>
 						</div>
-						<div class="product-bottom overflow">
+						<div class="product-bottom">
 							<div class="fly-title-box">
 								<p class="product-title transition-short">${item[i].c_name}</p>
-								<p class="product-text">${item[i].nam}</p>
+								<p class="product-text overflow">${item[i].nam}</p>
 							</div>
 							<div class="product-sale transition-short">立即购买</div>
 						</div>
@@ -55,10 +55,10 @@ $(function(){
 								</div>
 							</a>
 						</div>
-						<div class="product-bottom overflow">
+						<div class="product-bottom">
 							<div class="fly-title-box">
 								<p class="product-title transition-short">${item[i].c_name}</p>
-								<p class="product-text">${item[i].nam}</p>
+								<p class="product-text overflow">${item[i].nam}</p>
 							</div>
 							<div class="product-sale transition-short">立即购买</div>
 						</div>
